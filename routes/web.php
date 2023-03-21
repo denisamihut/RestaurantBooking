@@ -14,11 +14,9 @@ use app\Http\Controller\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index']);
+
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 
 Route::middleware([
     'auth:sanctum',
