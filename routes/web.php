@@ -22,10 +22,11 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/users', [\App\Http\Controllers\AdminController::class, 'user']);
 Route::get('/deleteuser/{id}', [\App\Http\Controllers\AdminController::class, 'deleteuser']);
 
-
 Route::get('/redirects', [\App\Http\Controllers\HomeController::class, 'redirects']);
 
+Route::get('/foodmenu', [\App\Http\Controllers\AdminController::class, 'foodmenu']);
 
+Route::post('/uploadfood', [\App\Http\Controllers\AdminController::class, 'upload']);
 
 Route::middleware([
     'auth:sanctum',
