@@ -8,6 +8,8 @@ use App\Models\User;
 
 use App\Models\Food;
 
+use App\Models\Reservation;
+
 
 class AdminController extends Controller
 {
@@ -28,6 +30,21 @@ class AdminController extends Controller
     {
         $data = food::all();
         return view("admin.foodmenu", compact("data"));
+    }
+
+    public function upload(Request $request)
+    {
+        $data = new food;
+        $image = $request->image;
+        $imagename = time() . '.' . $image->getClientOriginalExtension();
+        $request->image->move('foodimage', $imagename);
+        $data->image = $imagename;
+        $data->title = $request->title;
+        $data->price = $request->price;
+        $data->description = $request->description;
+        $data->save();
+
+        return redirect()->back();
     }
 
     public function deletemenu($id)
@@ -59,19 +76,21 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-
-    public function upload(Request $request)
+    public function reservation(Request $request)
     {
-        $data = new food;
-        $image = $request->image;
-        $imagename = time() . '.' . $image->getClientOriginalExtension();
-        $request->image->move('foodimage', $imagename);
-        $data->image = $imagename;
-        $data->title = $request->title;
-        $data->price = $request->price;
-        $data->description = $request->description;
+        $data = new reservation;
+
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->phone = $request->phone;
+        $data->guest = $request->guest;
+        $data->date = $request->date;
+        $data->time = $request->time;
+        $data->message = $request->message;
+
         $data->save();
 
         return redirect()->back();
     }
+
 }

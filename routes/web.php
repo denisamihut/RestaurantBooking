@@ -15,7 +15,17 @@ use app\Http\Controller\AdminController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
 
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 
@@ -30,18 +40,12 @@ Route::get('/foodmenu', [\App\Http\Controllers\AdminController::class, 'foodmenu
 Route::post('/uploadfood', [\App\Http\Controllers\AdminController::class, 'upload']);
 
 Route::get('/deletemenu/{id}', [\App\Http\Controllers\AdminController::class, 'deletemenu']);
-Route::get('/updatemenu/{id}', [\App\Http\Controllers\AdminController::class, 'updatemenu']);
 Route::post('/update/{id}', [\App\Http\Controllers\AdminController::class, 'update']);
+Route::get('/updatemenu/{id}', [\App\Http\Controllers\AdminController::class, 'updatemenu']);
+
+Route::post('/reservation', [\App\Http\Controllers\AdminController::class, 'reservation']);
 
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
 
 
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+
