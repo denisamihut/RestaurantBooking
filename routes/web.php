@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use app\Http\Controller\HomeController;
+use app\Http\Controller\AdminController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,9 @@ use app\Http\Controller\HomeController;
 
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
+
+Route::get('/users', [\App\Http\Controllers\AdminController::class, 'user']);
+Route::get('/deleteuser/{id}', [\App\Http\Controllers\AdminController::class, 'deleteuser']);
 
 
 Route::get('/redirects', [\App\Http\Controllers\HomeController::class, 'redirects']);
