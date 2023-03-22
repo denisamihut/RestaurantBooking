@@ -45,6 +45,7 @@ Route::get('/updatemenu/{id}', [\App\Http\Controllers\AdminController::class, 'u
 
 Route::post('/reservation', [\App\Http\Controllers\AdminController::class, 'reservation']);
 
+Route::get('/admreservation', [\App\Http\Controllers\AdminController::class, 'admreservation']);
 
 
 
