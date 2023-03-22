@@ -29,6 +29,9 @@ Route::get('/foodmenu', [\App\Http\Controllers\AdminController::class, 'foodmenu
 
 Route::post('/uploadfood', [\App\Http\Controllers\AdminController::class, 'upload']);
 
+Route::get('/deletemenu/{id}', [\App\Http\Controllers\AdminController::class, 'deletemenu']);
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

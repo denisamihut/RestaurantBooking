@@ -38,9 +38,31 @@
             </div>
 
         </form>
-    </div>
 
+        <div>
+            <table class="bg-dark">
+                <tr>
+                    <th class="p-5">Food Name</th>
+                    <th class="p-5">Price</th>
+                    <th class="p-5">Description</th>
+                    <th class="p-5">Image</th>
+                    <th class="p-5">Action</th>
+
+                </tr>
+                @foreach($data as $data)
+                <tr class="text-center">
+                    <td>{{ $data->title }}</td>
+                    <td>{{ $data->price }}</td>
+                    <td>{{ $data->description }}</td>
+                    <td><img height="150" width="150" src="/foodimage/{{ $data->image }}"></td>
+                    <td><a href="{{ url('/deletemenu', $data->id) }}">Delete</a></td>
+                </tr>
+                    @endforeach();
+            </table>
+        </div>
+    </div>
 </div>
+
 @include("admin.adminscript")
 
 </body>
