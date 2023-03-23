@@ -56,7 +56,7 @@ Route::post('/addcart/{id}', [\App\Http\Controllers\HomeController::class, 'addc
 Route::get('/showcart/{id}', [\App\Http\Controllers\HomeController::class, 'showcart']);
 Route::get('/remove/{id}', [\App\Http\Controllers\HomeController::class, 'remove']);
 
-
 Route::post('/orderconfirm', [\App\Http\Controllers\HomeController::class, 'orderconfirm']);
 
+Route::get('/orders', [\App\Http\Controllers\AdminController::class, 'orders']);
 
