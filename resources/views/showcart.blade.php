@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -61,8 +64,7 @@
                                 Cart[0]
                             @endguest
                         </li>
-                        <li>
-                            @if (Route::has('login'))
+                        <li>@if (Route::has('login'))
                                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
                         @auth
                             <li>
@@ -93,24 +95,67 @@
         </div>
     </div>
 </header>
+
 <div id="top">
-    <table class="align-content-center bg-primary mt-5 p-3">
-        <tr>
-            <th class="text-center text-black p-3">Food name</th>
-            <th class="text-center text-black p-3">Food price</th>
-            <th class="text-center text-black p-3">Quantity</th>
+    <table class="bg-secondary m-2 p-4">
+        <tr class="p-4">
+            <th class="text-center">Name</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-center">Action</th>
         </tr>
         @foreach($data as $data)
-            <tr class="text-center text-black p-3">
+            <tr class="text-center">
                 <td>{{ $data->title }}</td>
                 <td>{{ $data->price }}</td>
                 <td>{{ $data->quantity }}</td>
-
+            </tr>
+        @endforeach
+        @foreach($data2 as $data2)
+            <tr class="position-relative top-10">
+                <td><a href="{{ url('/remove', $data2->id) }}"
+                       class="text-black btn btn-warning rounded-3 m-1">Remove</a></td>
             </tr>
         @endforeach
     </table>
+
+    <div class="text-center">
+        <button id="order" class="btn btn-primary mt-5">Order Now</button>
+    </div>
+
+    <div id="appear" class="p-5 d-none">
+        <div class="text-center p-2">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Name">
+        </div>
+
+        <div class="text-center p-2">
+            <label>Phone</label>
+            <input type="number" name="phone" placeholder="Phone no">
+        </div>
+
+        <div class="text-center p-2">
+            <label>Address</label>
+            <input type="text" name="address" placeholder="Address">
+        </div>
+
+        <div class="text-center p-2">
+            <input class="btn btn-success" type="submit" value="Confirm Order">
+        </div>
+    </div>
+
+
 </div>
 
+<script type="text/javascript">
+
+    $("#order").click(
+        function () {
+            $("#appear").show();
+        }
+    );
+
+</script>
 <!-- jQuery -->
 <script src="assets/js/jquery-2.1.0.min.js"></script>
 

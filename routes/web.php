@@ -53,8 +53,8 @@ Route::post('/updatefoodchef/{id}', [\App\Http\Controllers\AdminController::clas
 Route::get('/deletechef/{id}', [\App\Http\Controllers\AdminController::class, 'deletechef']);
 
 Route::post('/addcart/{id}', [\App\Http\Controllers\HomeController::class, 'addcart']);
-
 Route::get('/showcart/{id}', [\App\Http\Controllers\HomeController::class, 'showcart']);
+Route::get('/remove/{id}', [\App\Http\Controllers\HomeController::class, 'remove']);
 
 
 
