@@ -44,8 +44,14 @@ Route::post('/update/{id}', [\App\Http\Controllers\AdminController::class, 'upda
 Route::get('/updatemenu/{id}', [\App\Http\Controllers\AdminController::class, 'updatemenu']);
 
 Route::post('/reservation', [\App\Http\Controllers\AdminController::class, 'reservation']);
-
 Route::get('/admreservation', [\App\Http\Controllers\AdminController::class, 'admreservation']);
+
+Route::get('/admchef', [\App\Http\Controllers\AdminController::class, 'admchef']);
+Route::post('/uploadchef', [\App\Http\Controllers\AdminController::class, 'uploadchef']);
+Route::get('/updatechef/{id}', [\App\Http\Controllers\AdminController::class, 'updatechef']);
+Route::post('/updatefoodchef/{id}', [\App\Http\Controllers\AdminController::class, 'updatefoodchef']);
+Route::get('/deletechef/{id}', [\App\Http\Controllers\AdminController::class, 'deletechef']);
+
 
 
 
