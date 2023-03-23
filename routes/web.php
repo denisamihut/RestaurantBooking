@@ -52,7 +52,7 @@ Route::get('/updatechef/{id}', [\App\Http\Controllers\AdminController::class, 'u
 Route::post('/updatefoodchef/{id}', [\App\Http\Controllers\AdminController::class, 'updatefoodchef']);
 Route::get('/deletechef/{id}', [\App\Http\Controllers\AdminController::class, 'deletechef']);
 
-Route::post('/addcart', [\App\Http\Controllers\HomeController::class, 'addcart']);
+Route::post('/addcart/{id}', [\App\Http\Controllers\HomeController::class, 'addcart']);
 
 
 
