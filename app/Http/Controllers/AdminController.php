@@ -14,6 +14,8 @@ use App\Models\FoodChef;
 
 use App\Models\Order;
 
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminController extends Controller
 {
@@ -99,8 +101,12 @@ class AdminController extends Controller
 
     public function admreservation()
     {
+        if(Auth::id()){
         $data = reservation::all();
         return view("admin.adminreservation", compact("data"));
+        }
+        else
+            return redirect('login');
     }
 
     public function admchef()
