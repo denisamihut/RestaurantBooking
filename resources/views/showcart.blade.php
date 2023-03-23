@@ -123,7 +123,7 @@
         <button id="order" class="btn btn-primary mt-5">Order Now</button>
     </div>
 
-    <div id="appear" class="p-5 d-none">
+    <div id="appear" style="display: none;" class="p-5">
         <div class="text-center p-2">
             <label>Name</label>
             <input type="text" name="name" placeholder="Name">
@@ -141,6 +141,8 @@
 
         <div class="text-center p-2">
             <input class="btn btn-success" type="submit" value="Confirm Order">
+            <button id="close" class="btn btn-danger">Close</button>
+
         </div>
     </div>
 
@@ -150,8 +152,15 @@
 <script type="text/javascript">
 
     $("#order").click(
-        function () {
+
+        function(){
             $("#appear").show();
+        }
+    );
+
+    $("#close").click(
+        function(){
+            $("#appear").hide();
         }
     );
 
