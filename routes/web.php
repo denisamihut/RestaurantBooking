@@ -60,3 +60,4 @@ Route::post('/orderconfirm', [\App\Http\Controllers\HomeController::class, 'orde
 
 Route::get('/orders', [\App\Http\Controllers\AdminController::class, 'orders']);
 
+Route::get('/search', [\App\Http\Controllers\AdminController::class, 'search']);

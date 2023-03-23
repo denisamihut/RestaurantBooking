@@ -6,10 +6,20 @@
     @include("admin.admincss")
 </head>
 <body>
-<h1>Customer Orders</h1>
 <div class="container-scroller">
+
     @include("admin.navbar")
-    <div>
+    <div class="container">
+
+
+        <h1>Customer Orders</h1>
+
+        <form action="{{ url('/search') }}" method="GET">
+            @csrf
+            <input type="text" name="search">
+            <input type="submit" value="Search" class="btn btn-success">
+        </form>
+
         <table class="bg-white mt-3 mb-4 p-3">
             <tr>
                 <th class="text-center text-black p-3">Name</th>
@@ -20,6 +30,8 @@
                 <th class="text-center text-black p-3">Quantity</th>
                 <th class="text-center text-black p-3">Total price</th>
             </tr>
+
+
             @foreach($data as $data)
                 <tr class="text-black text-center">
                     <td>{{ $data->name }}</td>
@@ -32,6 +44,7 @@
                 </tr>
             @endforeach
         </table>
+
     </div>
 </div>
 @include("admin.adminscript")

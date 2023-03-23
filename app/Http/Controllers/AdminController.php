@@ -131,7 +131,6 @@ class AdminController extends Controller
         return view("admin.updatechef", compact("data"));
     }
 
-
     public function updatefoodchef(Request $request, $id)
     {
         $data = foodchef::find($id);
@@ -160,6 +159,16 @@ class AdminController extends Controller
     public function orders()
     {
         $data = order::all();
+        return view('admin.orders', compact('data'));
+    }
+
+    public function search(Request $request)
+    {
+        $search=$request->search;
+        $data = order::where('name','Like','%'.$search.'%')->
+                 orwhere('foodname','Like','%'.$search.'%')
+                 ->get();
+
         return view('admin.orders', compact('data'));
     }
 }
