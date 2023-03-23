@@ -104,23 +104,36 @@
             <th class="text-center">Quantity</th>
             <th class="text-center">Action</th>
         </tr>
-        @foreach($data as $data)
-            <tr class="text-center">
-                <td>{{ $data->title }}</td>
-                <td>{{ $data->price }}</td>
-                <td>{{ $data->quantity }}</td>
-            </tr>
-        @endforeach
-        @foreach($data2 as $data2)
-            <tr class="position-relative top-10">
-                <td><a href="{{ url('/remove', $data2->id) }}"
-                       class="text-black btn btn-warning rounded-3 m-1">Remove</a></td>
-            </tr>
+
+
+        <form action="{{ url('/orderconfirm') }}" method="POST">
+            @csrf
+            @foreach($data as $data)
+                <tr class="text-center">
+                    <td>
+                        <input type="text" name="foodname[]" value="{{ $data->title }}" hidden="">
+                        {{ $data->title }}
+                    </td>
+                    <td>
+                        <input type="text" name="price[]" value="{{ $data->price }}" hidden="">
+                        {{ $data->price }}
+                    </td>
+                    <td>
+                        <input type="text" name="quantity[]" value="{{ $data->quantity }}" hidden="">
+                        {{ $data->quantity }}
+                    </td>
+                </tr>
+            @endforeach
+            @foreach($data2 as $data2)
+                <tr class="position-relative top-10">
+                    <td><a href="{{ url('/remove', $data2->id) }}"
+                           class="text-black btn btn-warning rounded-3 m-1">Remove</a></td>
+                </tr>
         @endforeach
     </table>
 
     <div class="text-center">
-        <button id="order" class="btn btn-primary mt-5">Order Now</button>
+        <button id="order" type="button" class="btn btn-primary mt-5">Order Now</button>
     </div>
 
     <div id="appear" style="display: none;" class="p-5">
@@ -141,25 +154,24 @@
 
         <div class="text-center p-2">
             <input class="btn btn-success" type="submit" value="Confirm Order">
-            <button id="close" class="btn btn-danger">Close</button>
+            <button id="close" type="button" class="btn btn-danger">Close</button>
 
         </div>
     </div>
-
-
+    </form>
 </div>
+
 
 <script type="text/javascript">
 
     $("#order").click(
-
-        function(){
+        function () {
             $("#appear").show();
         }
     );
 
     $("#close").click(
-        function(){
+        function () {
             $("#appear").hide();
         }
     );

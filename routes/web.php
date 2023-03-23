@@ -57,5 +57,6 @@ Route::get('/showcart/{id}', [\App\Http\Controllers\HomeController::class, 'show
 Route::get('/remove/{id}', [\App\Http\Controllers\HomeController::class, 'remove']);
 
 
+Route::post('/orderconfirm', [\App\Http\Controllers\HomeController::class, 'orderconfirm']);
 
 
