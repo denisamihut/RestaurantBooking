@@ -77,14 +77,16 @@
                         <li>
 
 
-                        <li class="scroll-to-section bg-danger"><a href="#reservation">
-                                @auth()
+                        <li class="scroll-to-section bg-danger">
+                            @auth()
+                                <a href="{{ url('/showcart', Auth::user()->id) }}">
                                     Cart{{ $count }}
-                                @endauth
-                                @guest
-                                    Cart[0]
-                                @endguest
-                            </a></li>
+                                </a>
+                            @endauth
+                            @guest
+                                Cart[0]
+                            @endguest
+                        </li>
                         <li>
                             @if (Route::has('login'))
                                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
